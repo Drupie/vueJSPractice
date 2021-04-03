@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="aplicacion">
+        <label for="">Ingrese su nombre</label>
+        <input type="text" v-model="nombre">
+        <p> {{nombre}} </p>
+    </div>
+    <div id="box">
+        <label for="">Ingresa tu edad</label>
+        <input type="text" v-model='edad'>
+        <br>
+        <label for="">{{edad}}</label>
+    </div>
+
+    <div class="numero">
+        <p>ingrese su edad</p>
+        <input type="number" v-model="cant">
+        <p v-if="cant>=18">Es mayor de edad</p>
+    </div>
+
+    <div id="comparar">
+        <p>Ingrese un valor entre 1 y 100</p>
+        <p><input type="number" v-model='numero' min="1" max="100"></p>
+        <p v-if="numero<=9">tiene un digito</p>
+        <p v-else-if="numero<=99">tiene dos digitos</p>
+        <p v-else>tiene tres digitos</p>
+    </div>
+
+    <h1>Ciclo for</h1>
+    <div id="for">
+        <ul>
+            <li v-for="lenguaje in lenguajes">{{lenguaje}}</li>
+        </ul>
+    </div>
+
+
+<div id="fortwo">
+    <table border="1">
+        <tr><td>codigo</td><td>descripcion</td><td>precio</td><td>Stock</td></tr>
+        <template v-for="articulo in articulos">
+            <tr>
+                <td>{{articulo.codigo}}</td>
+                <td>{{articulo.descripcion}}</td>
+                <td>{{articulo.precio}}</td>
+                <td>{{articulo.stock}}</td>
+            </tr>
+        </template>
+    </table>
+</div>
+
+<div id="clic">
+   <button V-on:click="contador=contador+1">el contador vale : {{contador}}</button>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app=new Vue({
+        el: '#aplicacion',
+        data: {
+            nombre : ''
+        }
+    })
+    var edad = new Vue({
+        el: '#box',
+        data :{
+            edad: ''
+        }
+    })
+    var condicion=new Vue({
+        el: '.numero',
+        data: {
+            cant : 0
+        }
+    })
+
+    var digitos=new Vue({
+        el:'#comparar',
+        data :{
+            numero :1
+        }
+    })
+
+    var repetidor=new Vue({
+        el :'#for',
+        data  :{
+            lenguajes : ['c','c++','java']
+        }
+    })
+
+
+    var arti=new Vue({
+        el :'#fortwo',
+        data  :{
+          articulos :[
+              {
+                  codigo: 1,
+                  descripcion: "Potato",
+                  precio: 12.50,
+                  stock:250
+              },
+              {
+                codigo: 2,
+                  descripcion: "Coffee",
+                  precio:20,
+                  stock:200
+              },
+              {
+                codigo : 3,
+                  descripcion: "Mouse",
+                  precio:20,
+                  stock:100
+              }
+          ]
+        }
+    })
+
+
+var evento=new Vue({
+    el: '#clic',
+    data:{
+        contador : 0
+    }
+})    
+</script>
+</html>
