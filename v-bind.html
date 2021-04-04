@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .faltastock{
+        background-color: #3498bd;
+        color: #ccc;
+        font-style: italic;
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+</style>
+</head>
+<body>
+    <div id="aplication">
+        <p>
+            Size of font
+        <input type="range" v-model="sizeFont" min=10 max=100>
+        {{sizeFont}}
+    </p>
+    <p>
+        Color
+        <input type="color" v-model="colorText">
+    </p>
+    <p v-bind:class="{faltastock : sizeFont, colorText}">This is a text</p>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var aplication=new Vue({
+            el : '#aplication',
+            data: {
+                sizeFont:  20,
+                colorText:  '#000'
+            }
+        })
+    </script>
+</body>
+</html>
